@@ -12,12 +12,32 @@ class List extends Component {
     }
 
     componentDidMount() {
-        var recipes = new Array();
-        recipes.push({"id": 1, "title": "howards cherry pie"})
-        this.setState({
-            isLoaded: true
-            , recipes: recipes
-        })
+        fetch("http://localhost:3001/recipes", { mode: 'cors', method: 'GET'}  )
+            .then(res => res.json())
+            .then((result) => {
+                console.log("ajax result:");
+                console.log(result);
+
+                var recipes = new Array();
+
+                result.forEach(recipe => {
+                    recipes.push({"id": recipe._id, "title": recipe.name})
+                    console.log(recipe)
+                })
+
+                this.setState({
+                    isLoaded: true
+                    , recipes: recipes
+                })
+
+            }
+            , (error) => {
+                console.log(error);
+                this.setState({
+                    isLoaded:true
+                    , error
+                });
+            });
     }
 
     render() {
@@ -31,7 +51,7 @@ class List extends Component {
         }
         else {
             return (
-               <div classname="List">
+               <div className="List">
                 {recipes.map(recipe => (
                     <li key={recipe.id}>
                         {recipe.title}
