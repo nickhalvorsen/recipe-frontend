@@ -7,13 +7,9 @@ import Header from "./Header.js";
 const App = () => (
     <Router>
         <div>
-            <div>
             <Header/>
-            <Link to="/recipe">Recipe</Link>
-            <Link to="/">back to list</Link>
-            </div>
             <Route exact path="/" component={List}/>
-            <Route path="/recipe" component={Recipe}/>
+            <Route path="/recipe/:id" component={Recipe}/>
         </div>
     </Router>
 );

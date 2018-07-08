@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import "./List.css";
 
 class List extends Component {
@@ -15,29 +16,24 @@ class List extends Component {
         fetch("http://localhost:3001/recipes", { mode: 'cors', method: 'GET'}  )
             .then(res => res.json())
             .then((result) => {
-                console.log("ajax result:");
-                console.log(result);
+                var recipes = []
 
-                var recipes = new Array();
-
-                result.forEach(recipe => {
+               result.forEach(recipe => {
                     recipes.push({"id": recipe._id, "title": recipe.name})
-                    console.log(recipe)
                 })
 
                 this.setState({
                     isLoaded: true
                     , recipes: recipes
                 })
-
             }
             , (error) => {
-                console.log(error);
+                console.log(error)
                 this.setState({
                     isLoaded:true
                     , error
-                });
-            });
+                })
+            })
     }
 
     render() {
@@ -54,7 +50,7 @@ class List extends Component {
                <div className="List">
                 {recipes.map(recipe => (
                     <li key={recipe.id}>
-                        {recipe.title}
+                        <Link to={"/recipe/" + recipe.id}>{recipe.title}</Link>
                     </li>
                 ))}
                 </div>
