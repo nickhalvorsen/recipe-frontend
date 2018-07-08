@@ -49,7 +49,6 @@ class Recipe extends Component {
     render() {
         const { error, isLoaded, recipe } = this.state
 
-
         if (error) {
             return <div>Error loading recipe: {error.message}</div>
         }
@@ -62,7 +61,18 @@ class Recipe extends Component {
                 <h1>{recipe.title}</h1>
                 <h3> by {recipe.author}</h3>
                 <p>{recipe.description}</p>
-                
+                <h2> ingredients </h2>
+                <ul>
+                    {recipe.ingredients.map((ingredient, i) => 
+                        <li key={i}>{ingredient}</li>   
+                    )}
+                </ul>
+                <h2> directions </h2>
+                <ul>
+                    {recipe.steps.map((step, i) => 
+                        <li key={i}>{step}</li>
+                    )}
+                </ul>
             </div>
         )
     }
