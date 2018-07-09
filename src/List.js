@@ -13,7 +13,7 @@ class List extends Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3001/recipes", { mode: 'cors', method: 'GET'}  )
+        fetch(process.env.API_HOST + '/recipes', { mode: 'cors', method: 'GET'}  )
             .then(res => res.json())
             .then((result) => {
                 var recipes = []

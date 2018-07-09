@@ -15,7 +15,7 @@ class Recipe extends Component {
     componentDidMount() {
         const { match: { params } } = this.props;
 
-        fetch("http://localhost:3001/recipes/" + params.id, { mode: 'cors', method: 'GET'}  )
+        fetch(process.env.API_HOST + '/recipes/' + params.id, { mode: 'cors', method: 'GET'}  )
             .then(res => res.json())
             .then((result) => {
                 console.log("ajax result:");
