@@ -35,6 +35,16 @@ h1 {
     cursor:pointer;
 }
 
+.delete-link {
+    display:block;
+    margin-top:2em;
+    color: #E22;
+}
+
+.delete-link:hover {
+    color: #B00;
+}
+
 .List {
     margin: 1rem;
 }

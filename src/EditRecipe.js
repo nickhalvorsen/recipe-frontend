@@ -17,6 +17,7 @@ class EditRecipe extends Component {
         this.addIngredient = this.addIngredient.bind(this)
         this.addStep = this.addStep.bind(this)
         this.saveChanges = this.saveChanges.bind(this)
+        this.deleteRecipe = this.deleteRecipe.bind(this)
     }
 
     componentDidMount() {
@@ -127,6 +128,21 @@ class EditRecipe extends Component {
         }
     }
 
+    deleteRecipe() {
+        if (!confirm('really delete recipe?')) {
+            return
+        }
+
+        var url = process.env.API_HOST + '/recipes/' + this.state.recipe.id
+        fetch(url, { mode: 'cors', method: 'DELETE'})
+            .then(() => {
+                window.location.replace('/')
+            }
+            , (error) => {
+                alert('deleting recipe failed.')
+            })
+    }
+
     render() {
         const { error, isLoaded, recipe } = this.state
 
@@ -186,6 +202,9 @@ class EditRecipe extends Component {
                     </li>
                 </ul>
                 <input type="submit" value={saveButtonText} disabled={this.state.changeStatus == ChangeStatusNoChanges || this.state.changeStatus == ChangeStatusSaved} onClick={this.saveChanges}/>
+                <div>
+                    <a className="action-link delete-link" onClick={this.deleteRecipe}>delete recipe</a>
+                </div>
             </div>
         )
     }

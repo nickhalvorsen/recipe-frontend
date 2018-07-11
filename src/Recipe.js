@@ -60,7 +60,7 @@ class Recipe extends Component {
                <Link to='/'>&lt; view list</Link>
                 <h1>{recipe.title}</h1>
                 <h3> by {recipe.author}</h3>
-                <p class="recipe-description">"{recipe.description}"</p>
+                <p className="recipe-description">"{recipe.description}"</p>
                 <h2> ingredients </h2>
                 <ul>
                     {recipe.ingredients.map((ingredient, i) => 
