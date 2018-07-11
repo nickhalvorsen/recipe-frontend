@@ -1,0 +1,47 @@
+body {
+   font-family: "Crimson Text", "Times New Roman", serif ;
+   font-size: 17px;
+   color: #222;
+}
+
+.Header, h1 {
+    font-family: "Montserrat", "Arial", sans-serif
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.Header {
+    border-bottom: 1px solid #CCC;
+}
+
+.header-text {
+    color: #222;
+    font-size: 1.6em;
+    margin: .5em;
+    letter-spacing: .05em;
+}
+
+.Header a:hover {
+    text-decoration: none;
+}
+
+.recipe-description {
+    font-style: italic;
+}
+
+.action-link {
+    cursor:pointer;
+}
+
+.List {
+    margin: 1rem;
+}
+.App {
+    margin: 1rem;
+}
+
+input[type="submit"]:disabled {
+    color: #999;
+}

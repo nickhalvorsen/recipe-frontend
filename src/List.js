@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import "./List.css";
 
 class List extends Component {
     constructor(props) {

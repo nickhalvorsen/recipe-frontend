@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import "./Recipe.css";
 
 class Recipe extends Component {
     constructor(props) {
@@ -21,9 +20,9 @@ class Recipe extends Component {
                 console.log("ajax result:");
                 console.log(result);
 
-
                 var recipe = {
-                    title: result.name
+                    id: result._id
+                    , title: result.name
                     , description: result.description
                     , author: result.author
                     , createdAt: result.createdAt
@@ -58,9 +57,10 @@ class Recipe extends Component {
 
         return (
             <div className="App">
+               <Link to='/'>&lt; view list</Link>
                 <h1>{recipe.title}</h1>
                 <h3> by {recipe.author}</h3>
-                <p>{recipe.description}</p>
+                <p class="recipe-description">"{recipe.description}"</p>
                 <h2> ingredients </h2>
                 <ul>
                     {recipe.ingredients.map((ingredient, i) => 
@@ -73,6 +73,9 @@ class Recipe extends Component {
                         <li key={i}>{step}</li>
                     )}
                 </ul>
+                <div>
+                    <Link to={'/editrecipe/' + this.state.recipe.id}>edit recipe</Link>
+                </div>
             </div>
         )
     }
