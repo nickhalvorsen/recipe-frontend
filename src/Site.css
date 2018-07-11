@@ -35,14 +35,22 @@ h1 {
     cursor:pointer;
 }
 
-.delete-link {
+.delete-link-container {
+
     display:block;
     margin-top:2em;
+}
+
+.delete-link {
     color: #E22;
 }
 
 .delete-link:hover {
     color: #B00;
+}
+
+.new-recipe-link {
+    float:right;
 }
 
 .List {

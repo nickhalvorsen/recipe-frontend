@@ -12,7 +12,8 @@ class List extends Component {
     }
 
     componentDidMount() {
-        fetch(process.env.API_HOST + '/recipes', { mode: 'cors', method: 'GET'}  )
+        var url = process.env.API_HOST + '/recipes'
+        fetch(url, { mode: 'cors', method: 'GET'}  )
             .then(res => res.json())
             .then((result) => {
                 var recipes = []
@@ -35,6 +36,20 @@ class List extends Component {
             })
     }
 
+    createNewRecipe() {
+        var url = process.env.API_HOST + '/recipes'
+        var emptyRecipe = { name: 'untitled', author: '', description: '' }
+        fetch(url, { mode: 'cors', method: 'POST', body: JSON.stringify(emptyRecipe), headers: new Headers({'Content-Type': 'application/json'}) })
+            .then(res => res.json())
+            .then((result) => {
+                var newUrl = '/editRecipe/' + result._id
+                window.location.replace(newUrl)
+            }
+            , (error) => {
+                alert("error creating new recipe.")
+            })
+    }
+
     render() {
         const {error, isLoaded, recipes} = this.state;
 
@@ -52,6 +67,9 @@ class List extends Component {
                         <Link to={"/recipe/" + recipe.id}>{recipe.title}</Link>
                     </li>
                 ))}
+                    <div className="new-recipe-link">
+                        <a className="action-link" onClick={this.createNewRecipe}>new recipe</a>
+                    </div>
                 </div>
             )
         }

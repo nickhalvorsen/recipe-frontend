@@ -22,7 +22,7 @@ class Recipe extends Component {
 
                 var recipe = {
                     id: result._id
-                    , title: result.name
+                    , title: this.isNullOrWhitespace(result.name) ? "untitled" : result.name
                     , description: result.description
                     , author: result.author
                     , createdAt: result.createdAt
@@ -43,6 +43,10 @@ class Recipe extends Component {
                     , error
                 })
             })
+    }
+
+    isNullOrWhitespace(str) {
+        return !str || !str.trim()
     }
 
     render() {

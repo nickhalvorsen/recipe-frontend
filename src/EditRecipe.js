@@ -104,9 +104,9 @@ class EditRecipe extends Component {
         var recipe = this.state.recipe
 
         var body = {
-            name: recipe.title
-            , description: recipe.description
-            , author: recipe.author
+            name: recipe.title.trim()
+            , description: recipe.description.trim()
+            , author: recipe.author.trim()
             , ingredients: recipe.ingredients
             , steps: recipe.steps
         }
@@ -202,7 +202,7 @@ class EditRecipe extends Component {
                     </li>
                 </ul>
                 <input type="submit" value={saveButtonText} disabled={this.state.changeStatus == ChangeStatusNoChanges || this.state.changeStatus == ChangeStatusSaved} onClick={this.saveChanges}/>
-                <div>
+                <div className="delete-link-container">
                     <a className="action-link delete-link" onClick={this.deleteRecipe}>delete recipe</a>
                 </div>
             </div>
