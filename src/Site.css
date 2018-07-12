@@ -42,16 +42,16 @@ body {
 
 .action-link {
     cursor:pointer;
+    color: #007BFF !important;
 }
 
 .delete-link-container {
-
     display:block;
     margin-top:2em;
 }
 
 .delete-link {
-    color: #E22;
+    color: #E22 !important;
 }
 
 .delete-link:hover {

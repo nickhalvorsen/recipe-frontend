@@ -4,7 +4,9 @@ import List from "./List.js";
 import Recipe from "./Recipe.js";
 import EditRecipe from './EditRecipe.js';
 import Header from "./Header.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Site.css";
+
 
 const App = () => (
     <Router>
