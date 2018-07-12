@@ -1,7 +1,8 @@
-const path = require("path");
-const webpack = require("webpack");
-const bundlePath = path.resolve(__dirname, "dist/");
-const dotenv = require('dotenv').config({path: __dirname + '/.env'});
+const path = require("path")
+const webpack = require("webpack")
+const bundlePath = path.resolve(__dirname, "dist/")
+const dotenv = require('dotenv').config({path: __dirname + '/.env'})
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: "./src/index.js",
@@ -25,14 +26,16 @@ module.exports = {
         filename: "bundle.js"
     },
     devServer: {
-        contentBase: path.join(__dirname,'public'),
+        // contentBase: path.join(__dirname,'public'),
+        contentBase: path.join(__dirname, 'dist'),
         port: 3000,
-        publicPath: "http://localhost:3000/dist",
+        //publicPath: "http://localhost:3000/dist",
         // need this line to fix webpack-dev-server 404'ing on page refresh
         historyApiFallback: true
     },
     plugins: [ 
         new webpack.HotModuleReplacementPlugin(), 
-        new webpack.DefinePlugin({'process.env': JSON.stringify(dotenv.parsed)})
+        new webpack.DefinePlugin({'process.env': JSON.stringify(dotenv.parsed)}),
+        new HtmlWebpackPlugin({title: 'Recipe', template: 'src/index.html'})
     ],
 };
