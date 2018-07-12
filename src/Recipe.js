@@ -61,9 +61,11 @@ class Recipe extends Component {
 
         return (
             <div className="App">
-               <Link to='/'>&lt; view list</Link>
-                <h1>{recipe.title}</h1>
-                <h3> by {recipe.author}</h3>
+                <div>
+                    <Link to='/'>&lt; view list</Link>
+                </div>
+                <h1 className="recipe-title">{recipe.title}</h1>
+                <h3 className="recipe-author"> by {recipe.author}</h3>
                 <p className="recipe-description">"{recipe.description}"</p>
                 <h2> ingredients </h2>
                 <ul>

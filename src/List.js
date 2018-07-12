@@ -61,7 +61,11 @@ class List extends Component {
         }
         else {
             return (
-               <div className="List">
+                <div className="List">
+                    <div className="intro">
+                        hello! my name is mary anne and I am a real person. here are all my recipes.  
+                        <div>&nbsp;</div>
+                    </div>
                 {recipes.map(recipe => (
                     <li key={recipe.id}>
                         <Link to={"/recipe/" + recipe.id}>{recipe.title}</Link>

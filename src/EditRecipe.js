@@ -115,8 +115,13 @@ class EditRecipe extends Component {
             var url = process.env.API_HOST + '/recipes/' + recipe.id
             fetch(url, { mode: 'cors', method: 'PUT', body: JSON.stringify(body), headers: new Headers({'Content-Type': 'application/json'}) }  )
                 .then((res) => {
-                    console.log(res)
-                    this.setState({ changeStatus: ChangeStatusSaved })
+                    if (!res.ok)
+                    {
+                        this.setState({ changeStatus: ChangeStatusSaveFailed })
+                    }
+                    else {
+                        this.setState({ changeStatus: ChangeStatusSaved })
+                    }
                 }
                 , (error) => {
                     throw(error)
@@ -135,7 +140,13 @@ class EditRecipe extends Component {
 
         var url = process.env.API_HOST + '/recipes/' + this.state.recipe.id
         fetch(url, { mode: 'cors', method: 'DELETE'})
-            .then(() => {
+            .then((res) => {
+                if (!res.ok)
+                {
+                    alert('deleting recipe failed.')
+                    return
+                }
+
                 window.location.replace('/')
             }
             , (error) => {
