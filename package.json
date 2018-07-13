@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "deploy": "webpack --mode development && aws s3 sync dist/ s3://recipe-frontend"
+    "deploy": "webpack --mode development && aws s3 sync dist/ s3://recipes.nickhalvorsen.com/"
   },
   "repository": {
     "type": "git",

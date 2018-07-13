@@ -21,12 +21,12 @@ module.exports = {
     },
     resolve: { extensions: ['*', '.js', '.jsx'] },
     output: {
-        publicPath: '/',
+        publicPath: '',
         filename: "bundle.js"
     },
     devServer: {
         // contentBase: path.join(__dirname,'public'),
-        //contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'dist'),
         port: 3000,
         //publicPath: "http://localhost:3000/dist",
         // need this line to fix webpack-dev-server 404'ing on page refresh
